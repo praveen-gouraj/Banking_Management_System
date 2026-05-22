@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS bank;
+USE bank;
+
+CREATE TABLE IF NOT EXISTS account (
+    acc_no INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    balance DECIMAL(12,2) NOT NULL DEFAULT 0.00
+);
+
+CREATE TABLE IF NOT EXISTS transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    acc_no INT NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    amount DECIMAL(12,2) NOT NULL,
+    balance_after DECIMAL(12,2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_transactions_account FOREIGN KEY (acc_no) REFERENCES account(acc_no) ON DELETE CASCADE
+);
