@@ -18,28 +18,23 @@ if errorlevel 1 (
     echo Build failed.
     exit /b 1
 )
-
 xcopy web\* target\war\ /E /I /Y >nul
 xcopy target\classes\* target\war\WEB-INF\classes\ /E /I /Y >nul
-copy /Y lib\mysql-connector-j-9.6.0.jar target\war\WEB-INF\lib\ >nul
-
+copy /Y lib\mysql-connector-j-9.6.0.jar target\war\WEB-INF\lib\ >nu
 jar --create --file target\banking-management-system.war -C target\war .
 if errorlevel 1 (
     echo WAR packaging failed.
     exit /b 1
-)
 
 if not defined TOMCAT_HOME (
     echo WAR created at target\banking-management-system.war
     echo Set TOMCAT_HOME or pass your Tomcat 9 folder as the first argument to deploy automatically.
     exit /b 0
 )
-
 if not exist "%TOMCAT_HOME%\webapps" (
     echo Tomcat webapps folder not found at "%TOMCAT_HOME%\webapps".
     exit /b 1
 )
-
 copy /Y target\banking-management-system.war "%TOMCAT_HOME%\webapps\" >nul
 if errorlevel 1 (
     echo Failed to copy WAR into Tomcat.
