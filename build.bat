@@ -7,6 +7,5 @@ if errorlevel 1 (
     echo Build failed.
     exit /b 1
 )
-
 echo Build successful.
 exit /b 0
