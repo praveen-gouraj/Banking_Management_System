@@ -1,11 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 cd /d %~dp0
-
 set "TOMCAT_HOME=%~1"
 if not defined TOMCAT_HOME set "TOMCAT_HOME=%CATALINA_HOME%"
 if not defined TOMCAT_HOME set "TOMCAT_HOME=%TOMCAT_HOME%"
-
 if exist target\classes rmdir /s /q target\classes
 if exist target\war rmdir /s /q target\war
 if exist target\banking-management-system.war del /q target\banking-management-system.war
