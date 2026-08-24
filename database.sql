@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS account (
     name VARCHAR(100) NOT NULL,
     balance DECIMAL(12,2) NOT NULL DEFAULT 0.00
 );
-
 CREATE TABLE IF NOT EXISTS transactions (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     acc_no INT NOT NULL,
